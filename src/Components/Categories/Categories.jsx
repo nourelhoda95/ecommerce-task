@@ -22,8 +22,8 @@ const Categories = () => {
   return (
     <div className=' flex flex-wrap   '>
       {categories.map((category) => (
-        <div key={category._id} className="category-cards  h-[350px] m-11 w-60  hover:shadow-2xl box-shadow card max-w-sm p-6 bg-white border border-gray-200 rounded-lg hover:shadow-2xl box-shadow  dark:bg-gray-800 dark:border-gray-700 m-5">
-          <img src={category.image} className='mb-5 ' alt={category.name} />
+        <div key={category._id} className="category-cards  h-[350px] m-11 w-80  hover:shadow-2xl box-shadow card max-w-sm p-6 bg-white border border-gray-200 rounded-lg hover:shadow-2xl box-shadow  dark:bg-gray-800 dark:border-gray-700 m-5">
+          <img src={category.image} className='mb-5 w-full h-[250px]' alt={category.name} />
           <h2>{category.name}</h2>
         </div>
       ))}
