@@ -10,16 +10,16 @@ export default function Products(){
 
   useEffect(() => {
     let fetchCategories = async () => {
-      let token = localStorage.getItem('token');
+      let userToken = localStorage.getItem('userToken');
       
-      if (!token) {
-        console.error('No token found');
+      if (!userToken) {
+        console.error('No userToken found');
         return;
       }
       try {
         let response = await fetch('https://ecommerce.routemisr.com/api/v1/products', {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${userToken}`,
           },
         });
         let data = await response.json();
@@ -30,16 +30,16 @@ export default function Products(){
     };
 
     let fetchWishlist = async () => {
-      let token = localStorage.getItem('token');
+      let userToken = localStorage.getItem('userToken');
       
-      if (!token) {
-        console.error('No token found');
+      if (!userToken) {
+        console.error('No userToken found');
         return;
       }
       try {
         let response = await fetch('https://ecommerce.routemisr.com/api/v1/wishlist', {
           headers: {
-            'token': token,
+            'userToken': userToken,
           },
         });
         let data = await response.json();
@@ -54,10 +54,10 @@ export default function Products(){
   }, []);
 
   let addToWishlist = async (productId) => {
-    let token = localStorage.getItem('token');
+    let userToken = localStorage.getItem('userToken');
   
-    if (!token) {
-      console.error('No token found');
+    if (!userToken) {
+      console.error('No userToken found');
       return;
     }
   
@@ -69,7 +69,7 @@ export default function Products(){
         method: method,
         headers: {
           'Content-Type': 'application/json',
-          'token': token,
+          'userToken': userToken,
         },
         body: method === 'POST' ? JSON.stringify({ productId }) : undefined,
       });
@@ -92,10 +92,10 @@ export default function Products(){
   };
   
   let addToCart = async (productId) => {
-    let token = localStorage.getItem('token');
+    let userToken = localStorage.getItem('userToken');
 
-    if (!token) {
-      console.error('No token found');
+    if (!userToken) {
+      console.error('No userToken found');
       return;
     }
 
@@ -104,7 +104,7 @@ export default function Products(){
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'token': token,
+          'userToken': userToken,
         },
         body: JSON.stringify({ productId }),
       });
@@ -149,7 +149,7 @@ export default function Products(){
         />
       </div>
       <div  className='  flex flex-wrap   justify-center ' >
-      <div className='   w-1/6 product px-2 py-4  '>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4    product px-2 py-4  '>
         {filteredCategories.map((category) => (
           <div className='w-full   '>
           <div key={category._id} className="  hover:shadow-2xl box-shadow card  pb-4  bg-white border border-gray-200 rounded-lg hover:shadow-2xl box-shadow  dark:bg-gray-800 dark:border-gray-700  m-5 ">
