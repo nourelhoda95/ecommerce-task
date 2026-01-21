@@ -26,7 +26,7 @@ import WishList from './Components/WishList/WishList.jsx'
 
 let routers = createBrowserRouter([
   {path: '' , element: <Layout/>, children :[
-    {index: true  , element:<ProtectRoute><Home/></ProtectRoute>},
+    {index: true  , element:<Home/>},
     {path:'cart' , element:<ProtectRoute><Cart/></ProtectRoute>},
     {path:'wishList' , element:<ProtectRoute><WishList/></ProtectRoute>},
     {path:'products' , element:<ProtectRoute><Products/></ProtectRoute>},
